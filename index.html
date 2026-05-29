@@ -830,8 +830,25 @@ function sbFetch(path,options){
 async function dbSelect(t,q){var r=await sbFetch(t+'?'+(q||''),{method:'GET'});if(!r.ok){var e=await r.text();throw new Error(e);}return r.json();}
 async function dbInsert(t,d){var r=await sbFetch(t,{method:'POST',body:JSON.stringify(d)});if(!r.ok){var e=await r.text();throw new Error(e);}return r.json();}
 async function dbUpdate(t,q,d){var r=await sbFetch(t+'?'+q,{method:'PATCH',headers:{'Prefer':'return=representation'},body:JSON.stringify(d)});if(!r.ok){var e=await r.text();throw new Error(e);}return r.json();}
-async function dbUpsert(t,d){var r=await sbFetch(t,{method:'POST',headers:{'Prefer':'resolution=merge-duplicates,return=representation'},body:JSON.stringify(d)});if(!r.ok){var e=await r.text();throw new Error(e);}return r.json();}
+async function dbUpsert(t,d){
+  var r = await sbFetch(
+    t + '?on_conflict=user_id,event_id',
+    {
+      method:'POST',
+      headers:{
+        'Prefer':'resolution=merge-duplicates,return=representation'
+      },
+      body:JSON.stringify(d)
+    }
+  );
 
+  if(!r.ok){
+    var e = await r.text();
+    throw new Error(e);
+  }
+
+  return r.json();
+}
 var DRIVERS=[
   {id:1,name:"Lando Norris",team:"McLaren"},{id:2,name:"Oscar Piastri",team:"McLaren"},
   {id:3,name:"Lewis Hamilton",team:"Ferrari"},{id:4,name:"Charles Leclerc",team:"Ferrari"},
