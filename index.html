@@ -1344,7 +1344,7 @@ async function renderProdeTable(evId){
     if(res&&res.dnf_count!==null&&res.dnf_count!==undefined)html+='<div class="prode-legend-item"><div class="legend-dot" style="background:#ff6b6b"></div>DNS/DNF exacto (1pt)</div>';
     html+='</div><div class="prode-table-wrap"><table class="prode-table"><thead><tr><th>Usuario</th><th>🏆 Pole</th>';
     for(var pos=1;pos<=posN;pos++)html+='<th>P'+pos+'</th>';
-    html+='<th>DNS/DNF (Autos que no Comenzaran y Terminaran la carrera)</th><th>Pts</th></tr></thead><tbody>';
+    html+='<th>DNS/DNF</th><th>Pts</th></tr></thead><tbody>';
     if(res){
       html+='<tr class="result-row"><td>✅ REAL</td><td>'+driverShort(res.pole)+'</td>';
       for(var pos2=0;pos2<posN;pos2++){
