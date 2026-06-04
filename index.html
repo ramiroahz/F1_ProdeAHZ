@@ -1169,7 +1169,7 @@ function openModal(ev){
   for(var i=0;i<DRIVERS.length;i++) opts+='<option value="'+DRIVERS[i].id+'"'+(DRIVERS[i].id===existPole?' selected':'')+'>'+DRIVERS[i].name+' — '+DRIVERS[i].team+'</option>';
   var existDnf = pred.dnf_count !== undefined && pred.dnf_count !== null ? pred.dnf_count : '';
   var html='<div class="pole-box"><div class="pole-icon">🏆</div><div style="flex:1"><div class="pole-label">Pole Position</div><div class="pole-points-badge">✦ Vale 2 puntos si acertás</div><select class="pole-select" id="sel-pole">'+opts+'</select></div></div>';
-  html+='<div class="dnf-box"><div class="dnf-icon">🚫</div><div style="flex:1"><div class="dnf-label">DNS / DNF (No Comenzaran y/o Terminaran la Carrera)</div><div class="dnf-points-badge">✦ Vale 1 punto si acertás la cantidad exacta</div><input class="dnf-input" type="number" id="sel-dnf" min="0" max="22" placeholder="0-22" value="'+existDnf+'"></div></div>';
+  html+='<div class="dnf-box"><div class="dnf-icon">🚫</div><div style="flex:1"><div class="dnf-label">DNS / DNF (No Comenzaran y/o No Terminaran la Carrera)</div><div class="dnf-points-badge">✦ Vale 1 punto si acertás la cantidad exacta</div><input class="dnf-input" type="number" id="sel-dnf" min="0" max="22" placeholder="0-22" value="'+existDnf+'"></div></div>';
   html+='<div class="divider"></div><div class="pred-section-label">'+(isSpr?'Resultado Sprint — Top 8 (1pt c/u)':'Resultado Carrera — Top 10 (1pt c/u)')+'</div>';
   for(var p=0;p<posN;p++){
     var pc=p===0?'pos-1':p===1?'pos-2':p===2?'pos-3':'pos-n';
