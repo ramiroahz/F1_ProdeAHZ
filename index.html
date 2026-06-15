@@ -1895,9 +1895,18 @@ async function renderStats(){
       var k4=parseInt(p3.dnf_count);
       dnfFreq[k4]=(dnfFreq[k4]||0)+1;
     }
-    var popNum='—', popCount=0;
-    for(var kk in dnfFreq){ if(dnfFreq[kk]>popCount){popCount=dnfFreq[kk];popNum=kk;} }
-    html += '<div class="stat-card"><div class="stat-card-icon">🔍</div><div class="stat-card-label">Número más popular de DNS/DNF</div><div class="stat-podium"><div class="stat-podium-row gold"><div class="stat-podium-name">🔢 Número elegido</div><div class="stat-podium-val gold-val">'+popNum+'<span style="font-size:0.65rem;color:var(--text-muted);font-family:Rajdhani"> ('+popCount+' veces)</span></div></div></div></div>';
+    var dnfTop3 = Object.keys(dnfFreq)
+      .map(function(k){ return {num:k, count:dnfFreq[k]}; })
+      .sort(function(a,b){ return b.count-a.count; })
+      .slice(0,3);
+    var dnfClasses = ['gold','silver','bronze'], dnfMedals = ['🥇','🥈','🥉'], dnfValClasses=['gold-val','silver-val','bronze-val'];
+
+    html += '<div class="stat-card"><div class="stat-card-icon">🔍</div><div class="stat-card-label">Números más populares de DNS/DNF</div><div class="stat-podium">';
+    for(var dt=0;dt<dnfTop3.length;dt++){
+      var dItem=dnfTop3[dt];
+      html += '<div class="stat-podium-row '+dnfClasses[dt]+'"><div class="stat-podium-name">'+dnfMedals[dt]+' Número '+dItem.num+'</div><div class="stat-podium-val '+(dt<3?dnfValClasses[dt]:'')+'">'+dItem.count+' veces</div></div>';
+    }
+    html += '</div></div>';
 
     html += '</div>';
 
@@ -3781,7 +3790,7 @@ async function renderPilotStats(){
     for(var i=0;i<heartbreakers.length;i++){
       var dh=heartbreakers[i];
       var hRate=Math.round((dh.failedPodium/dh.chosenPodium)*100);
-      html+='<div class="stat-podium-row '+classes[i]+'"><div class="stat-podium-name">'+medals[i]+' '+dh.name+'</div><div class="stat-podium-val '+(i<3?classes[i]+'-val':'')+'" >'+dh.failedPodium+' vez'+(dh.failedPodium!==1?'ces':'')+' ('+hRate+'%)</div></div>';
+      html+='<div class="stat-podium-row '+classes[i]+'"><div class="stat-podium-name">'+medals[i]+' '+dh.name+'</div><div class="stat-podium-val '+(i<3?classes[i]+'-val':'')+'" >'+dh.failedPodium+' veces ('+hRate+'%)</div></div>';
     }
     html += '</div></div>';
 
