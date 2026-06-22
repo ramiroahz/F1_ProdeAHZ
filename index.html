@@ -2887,7 +2887,7 @@ async function checkHistoricalBadges(){
     if(prodeWins>=3    && userBadges.indexOf('top_gun')===-1)    toAward.push('top_gun');
     if(maxColdStreak>=3 && userBadges.indexOf('cold_streak')===-1) toAward.push('cold_streak');
     if(scCorrect>=5    && userBadges.indexOf('hawk_eye')===-1)      toAward.push('hawk_eye');
-    if((scPredicted+scNoneCount)>=10 && userBadges.indexOf('gambler')===-1) toAward.push('gambler');
+    if((scPredicted)>=10 && userBadges.indexOf('gambler')===-1) toAward.push('gambler');
     if(maxScStreak>=3   && userBadges.indexOf('chaos_prophet')===-1) toAward.push('chaos_prophet');
     if(scNoneCount>=8    && userBadges.indexOf('cautious')===-1)     toAward.push('cautious');
     if(scCorrect>=10    && userBadges.indexOf('sc_perfect')===-1)    toAward.push('sc_perfect');
