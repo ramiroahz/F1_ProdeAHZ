@@ -3502,7 +3502,7 @@ async function renderLiga(){
     html += '<div class="liga-fixtures">';
     for(var r=0;r<rounds.length;r++){
       var round = rounds[r];
-      var evName = LIGA_EVENT_NAMES[round.event_id] || 'Jornada '+(r+1);
+      var evName = LIGA_EVENT_NAMES[round.event_id] || 'Fecha '+(r+1);
       var matches = fixtureByRound[round.id]||[];
       var evObj = null;
       for(var ei=0;ei<EVENTS.length;ei++){if(EVENTS[ei].id===round.event_id){evObj=EVENTS[ei];break;}}
@@ -3510,7 +3510,7 @@ async function renderLiga(){
 
       html += '<div class="liga-round-card">';
       html += '<div class="liga-round-header">';
-      html += '<div class="liga-round-title">Jornada '+(r+1)+'</div>';
+      html += '<div class="liga-round-title">Fecha '+(r+1)+'</div>';
       html += '<div class="liga-round-event">'+evName+(hasRes?' · Finalizada':' · Pendiente')+'</div>';
       html += '</div>';
       html += '<div class="liga-matches">';
