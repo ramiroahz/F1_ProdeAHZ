@@ -1648,7 +1648,7 @@ async function renderProdeTable(evId){
       html+='<td style="color:#ff6b6b;font-weight:700">'+resDnf+'</td>';
       var resSC = res.safety_car!==null&&res.safety_car!==undefined ? (res.safety_car?'SÍ':'NO') : '—';
       html+='<td style="color:#FFC107;font-weight:700">'+resSC+'</td>';
-      var resAlpine = res.alpine_duel==='gasly'?'#10':res.alpine_duel==='colapinto'?'43':'—';
+      var resAlpine = res.alpine_duel==='gasly'?'Gasly':res.alpine_duel==='colapinto'?'Colapinto':'—';
       html+='<td style="color:var(--purple);font-weight:700">'+resAlpine+'</td>';
       html+='<td>—</td></tr>';
     }
@@ -1672,7 +1672,7 @@ async function renderProdeTable(evId){
         var scClass = scPred==='—'?'':(scHit?'cell-hit':scMiss?'cell-miss':'');
         html+='<td class="'+scClass+'">'+scPred+'</td>';
         // Alpine column
-        var alpinePred = pred.alpine_duel==='gasly'?'#10':pred.alpine_duel==='colapinto'?'43':'—';
+        var alpinePred = pred.alpine_duel==='gasly'?'Gasly':pred.alpine_duel==='colapinto'?'Colapinto':'—';
         var alpineHit = res&&res.alpine_duel&&pred.alpine_duel&&pred.alpine_duel===res.alpine_duel;
         var alpineMiss = res&&res.alpine_duel&&pred.alpine_duel&&pred.alpine_duel!==res.alpine_duel;
         var alpineClass = alpinePred==='—'?'':(alpineHit?'cell-hit':alpineMiss?'cell-miss':'');
