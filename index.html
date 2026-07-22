@@ -3667,7 +3667,7 @@ async function renderLiga(){
     html += '<div class="liga-table-wrap">';
     html += '<div class="liga-table-header"><div class="liga-table-title">Tabla de Posiciones</div></div>';
     html += '<div style="overflow-x:auto"><table class="liga-table"><thead><tr>';
-    html += '<th>#</th><th>Jugador</th><th>PJ</th><th>G</th><th>E</th><th>P</th><th>Dif</th><th>Pts</th><th title="Últimos 5 resultados">Forma</th>';
+    html += '<th>#</th><th>Jugador</th><th>PJ</th><th>G</th><th>E</th><th>P</th><th>Dif</th><th>Pts</th><th title="Últimos 5 resultados">Últimas 5 Fechas</th>';
     html += '</tr></thead><tbody>';
 
     var ligaFinished = rounds.length > 0 && rounds.every(function(r){ return !!resMap[r.event_id]; });
